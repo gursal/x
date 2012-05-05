@@ -1,12 +1,15 @@
 " Yeni eklenti eklemek için bu dosyayı düzenlemek yerine ~/.vim/local.vim
 " dosyasını düzenleyin.
 
+" Bundle: git://github.com/bbommarito/vim-slim.git
 " Bundle: git://github.com/bronson/vim-trailing-whitespace.git
 " Bundle: git://github.com/ervandew/supertab.git
 " Bundle: git://github.com/garbas/vim-snipmate.git
 " Bundle: git://github.com/honza/snipmate-snippets.git
 " Bundle: git://github.com/jnwhiteh/vim-golang.git
+" Bundle: git://github.com/juvenn/mustache.vim.git
 " Bundle: git://github.com/kchmck/vim-coffee-script.git
+" Bundle: git://github.com/majutsushi/tagbar.git
 " Bundle: git://github.com/MarcWeber/vim-addon-mw-utils.git
 " Bundle: git://github.com/scrooloose/syntastic.git
 " Bundle: git://github.com/spiiph/vim-space.git
@@ -42,7 +45,6 @@
 " Bundle: git://github.com/vim-scripts/pydoc.vim.git
 " Bundle: git://github.com/vim-scripts/ruby.vim.git
 " Bundle: git://github.com/vim-scripts/SingleCompile.git
-" Bundle: git://github.com/vim-scripts/taglist.vim
 " Bundle: git://github.com/vim-scripts/tComment.git
 " Bundle: git://github.com/vim-scripts/tir_black.git
 " Bundle: git://github.com/vim-scripts/xmledit.git
