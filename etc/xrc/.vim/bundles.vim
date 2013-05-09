@@ -1,17 +1,18 @@
 " Yeni eklenti eklemek için bu dosyayı düzenlemek yerine ~/.vim/local.vim
 " dosyasını düzenleyin.
 
-" Bundle: git://github.com/bbommarito/vim-slim.git
 " Bundle: git://github.com/bronson/vim-trailing-whitespace.git
 " Bundle: git://github.com/ervandew/supertab.git
 " Bundle: git://github.com/garbas/vim-snipmate.git
-" Bundle: git://github.com/honza/snipmate-snippets.git
+" Bundle: git://github.com/honza/vim-snippets.git
 " Bundle: git://github.com/jnwhiteh/vim-golang.git
 " Bundle: git://github.com/juvenn/mustache.vim.git
 " Bundle: git://github.com/kchmck/vim-coffee-script.git
 " Bundle: git://github.com/majutsushi/tagbar.git
 " Bundle: git://github.com/MarcWeber/vim-addon-mw-utils.git
+" Bundle: git://github.com/mattn/webapi-vim.git
 " Bundle: git://github.com/scrooloose/syntastic.git
+" Bundle: git://github.com/slim-template/vim-slim.git
 " Bundle: git://github.com/spiiph/vim-space.git
 " Bundle: git://github.com/tomtom/tlib_vim.git
 " Bundle: git://github.com/tpope/vim-abolish.git
@@ -42,11 +43,9 @@
 " Bundle: git://github.com/vim-scripts/matchit.zip.git
 " Bundle: git://github.com/vim-scripts/nginx.vim.git
 " Bundle: git://github.com/vim-scripts/pep8.git
-" Bundle: git://github.com/vim-scripts/pydoc.vim.git
 " Bundle: git://github.com/vim-scripts/ruby.vim.git
 " Bundle: git://github.com/vim-scripts/SingleCompile.git
 " Bundle: git://github.com/vim-scripts/tComment.git
 " Bundle: git://github.com/vim-scripts/tir_black.git
 " Bundle: git://github.com/vim-scripts/xmledit.git
-" Bundle: git://github.com/vim-scripts/yaifa.vim.git
 " Bundle: git://github.com/vim-scripts/ZenCoding.vim.git

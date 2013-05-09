@@ -113,7 +113,7 @@ git_pull_success_on_update() {
 	local prev
 
 	prev=$(git rev-parse HEAD 2>/dev/null ||:)
-	git pull "$@" || return 0
+	GIT_MERGE_AUTOEDIT=no git pull "$@" || return 0
 	case "$(git rev-parse HEAD 2>/dev/null ||:)" in
 	$prev)
 		return 1
@@ -121,61 +121,7 @@ git_pull_success_on_update() {
 	esac
 }
 
-# GitHub API
-
-# github api erişimi
-gh_api() {
-	local args user token url https quiet format command
-
-	unset REPLY
-
-	args=$(getopt "su:t:f:" $*) || bug "getopt hatası: $*"
-
-	set -- $args
-	while [ $# -ge 0 ]; do
-		case "$1" in
-		-s) https=yes;   shift ;;
-		-u) user="$2";   shift; shift ;;
-		-t) token="$2";	 shift; shift ;;
-		-f) format="$2"; shift; shift ;;
-		--) shift; break ;;
-		esac
-	done
-
-	[ $# -eq 1 ] || bug "eksik veya fazla argüman"
-
-	: ${user:="$GITHUB_USER"}
-	: ${token:="$GITHUB_TOKEN"}
-	: ${format:='yaml'}
-
-	url=$(printf "$1" "$user")
-
-	if [ -n "$https" ]; then
-		[ -n "$user"  ] || bug "GitHub hesabı verilmeli"
-		[ -n "$token" ] || bug "GitHub token verilmeli"
-		command="curl -s -F 'login=${user}' -F 'token=${token}' https://github.com/api/v2/${format}/${url}"
-	else
-		command="curl -s http://github.com/api/v2/${format}/${url}"
-	fi
-
-	REPLY=$($command 2>/dev/null)     || return
-	if echo "$REPLY" | egrep -q '^error'; then
-		REPLY=
-		return 1
-	fi
-}
-
-# verilen dizgi geçerli bir github token değeri mi?
-gh_istoken() {
-	local token="$1"
-	[ ${#token} -eq 32 ] || return 1
-	echo "$token" | egrep -q -v '[0-9a-fA-F]' && return 1
-	return 0
-}
-
-# github api için http ve https erişimleri
-gh_http()  { gh_api    "$@"; }
-gh_https() { gh_api -s "$@"; }
+# GitHub
 
 # github ssh ile erişilebilir durumda mı?
 gh_writable() {
@@ -187,6 +133,11 @@ gh_writable() {
 			if ! [ -d ~/.ssh ] || [ -r ~/.ssh/id_rsa ] || [ -r ~/.ssh/id_dsa ]; then
 				IS_SSHABLE=no
 			fi
+			cry "SSH yetkilendirme ajanı aktif değil."
+			cry "Yeni bir yetkilendirme ajanı oluşturulacak;" \
+                            "lütfen öntanımlı SSH anahtarına ait parolayı girin."
+			eval $(ssh-agent)
+			ssh-add
 		fi
 		if [ -z "${IS_SSHABLE+X}" ]; then
 			# Aksi halde daha yorucu ve çirkin bir kontrol gerekiyor.
